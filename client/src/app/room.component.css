@@ -1,0 +1,34 @@
+.btnTake {
+  height: 40px;
+  background-color: green;
+  color: white;
+  position: absolute;
+  right: 5%;
+  width: 80px;
+}
+
+.room-card {
+  background-color: #BFFD95;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 600px) {
+  .room-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .btnTake {
+    position: absolute;
+    align-items: center;
+  }
+}
+
+.info {
+  align-self: center;
+  /*padding-left: 20%;
+  padding-right: 20%;*/
+  margin-left: 10%;
+  width: 20vw;
+}

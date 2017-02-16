@@ -1,0 +1,27 @@
+<div class="wrap-component">
+  <md-input-container>
+    <input md-input placeholder="Date" />
+  </md-input-container>
+
+  <md-input-container>
+    <input md-input placeholder="Time" />
+  </md-input-container>
+
+  <md-input-container>
+    <input md-input placeholder="Capacity" />
+  </md-input-container>
+
+  <md-checkbox>Show only available</md-checkbox>
+  <!-- <label><input type="checkbox">Show only available</label> -->
+
+  <br />
+
+  <button (click)="clicked()" md-button>Show rooms</button>
+
+    <div *ngIf="showRooms">
+      <div *ngFor="let room of rooms" >
+        <room [number]="room.number" [available]="room.available" [capacity]="room.capacity"></room>
+        <!-- <room [roomNumber]="room.roomNumber" [isTaken]="room.isTaken" [capacity]="room.capacity"></room>
+            </div> -->
+    </div>
+</div>
