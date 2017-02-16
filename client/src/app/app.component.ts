@@ -11,36 +11,14 @@ import { FilterAvailablePipe } from './available.pipe';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [RoomService, FilterAvailablePipe]
+  providers: [RoomService]
 })
 
 export class AppComponent {
-  constructor(
-    private roomService: RoomService
-  ){}
-
-  @Input() rooms: Room[];
-  showRooms: boolean;
-  isChecked: boolean;
-
-  clicked() {
-    this.showRooms = this.showRooms == true ? false : true;
+  login() {
+   this.router.navigate(['/login']);
   }
-
-  checked() {
-    this.isChecked = this.isChecked == true ? false : true;
-  }
-
-  ngOnInit() {
-    this.loadRooms();
-  }
-
-  loadRooms() {
-    this.roomService.getRooms()
-      .subscribe(
-      rooms => this.rooms = rooms,
-      err => {
-        console.log(err);
-      });
+  register() {
+   this.router.navigate(['/register']);
   }
 }

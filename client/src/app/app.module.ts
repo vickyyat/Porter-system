@@ -8,31 +8,36 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { Room } from './models/room';
-import { RoomComponent } from './room.component';
+import { RoomComponent } from './components/room/room.component';
+import { RoomListComponent } from './components/room-list/room-list.component';
+import { LoginComponent } from './components/login/login.component';
+import { NavigationComponent } from './components/navigation.component';
+import { RegisterComponent } from './components/register/register.component';
 import { RoomService } from './services/room.service';
+import { UserService } from './services/user.service';
 import { EmitterService } from './emitter.service';
 import { FilterAvailablePipe } from './available.pipe';
-
-
-const appRoutes: Routes = [
-//  { path: 'login', component: LoginComponent },
-  { path: 'index', component: AppComponent }
-];
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoomComponent,
-    FilterAvailablePipe
+    RoomListComponent,
+    LoginComponent,
+    RegisterComponent,
+    FilterAvailablePipe,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     JsonpModule,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    AppRoutingModule
   ],
-  providers: [EmitterService, RoomService],
+  providers: [EmitterService, RoomService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
