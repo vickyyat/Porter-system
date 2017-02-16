@@ -1,5 +1,5 @@
 <div class="wrap-component">
-  <md-input-container>
+  <!-- <md-input-container>
     <input md-input placeholder="Date" />
   </md-input-container>
 
@@ -9,19 +9,29 @@
 
   <md-input-container>
     <input md-input placeholder="Capacity" />
-  </md-input-container>
+  </md-input-container> -->
 
-  <md-checkbox>Show only available</md-checkbox>
+    <input md-input placeholder="Date" />
+    <input md-input placeholder="Time" />
+    <input md-input placeholder="Capacity" />
+
+
+  <label><input #ref (click)="checked()" type="checkbox"/>Show only available</label>
+  <!-- <md-checkbox>Show only available</md-checkbox> -->
   <!-- <label><input type="checkbox">Show only available</label> -->
 
   <br />
 
   <button (click)="clicked()" md-button>Show rooms</button>
 
-    <div *ngIf="showRooms">
-      <div *ngFor="let room of rooms" >
-        <room [number]="room.number" [available]="room.available" [capacity]="room.capacity"></room>
-        <!-- <room [roomNumber]="room.roomNumber" [isTaken]="room.isTaken" [capacity]="room.capacity"></room>
-            </div> -->
+  <div *ngIf="showRooms && isChecked">
+    <div *ngFor="let room of rooms | filterAvailable: ref.checked">
+      <room [number]="room.number" [available]="room.available" [capacity]="room.capacity"></room>
     </div>
-</div>
+  </div>
+
+  <div *ngIf="showRooms && !isChecked">
+    <div *ngFor="let room of rooms">
+      <room [number]="room.number" [available]="room.available" [capacity]="room.capacity"></room>
+    </div>
+  </div>
