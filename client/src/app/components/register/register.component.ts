@@ -19,17 +19,19 @@ import { UserService } from '../../services/user.service';
 
 export class RegisterComponent {
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
-  @Input() user: User;
-
   addUser(usr: string, pass: string, confPass: string) {
-    if (pass === confPass) {
-      console.log(this.user);
-      this.user.username = usr;
-      this.user.password = pass;
-      this.userService.addUser(this.user);
+    if (pass == confPass) {
+      let user = new User(usr, pass);
+      this.userService.addUser(user).subscribe(
+      user => user,
+      err => {
+        console.log(err);
+      });
+      this.router.navigateByUrl('/index');
     }
   }
 }

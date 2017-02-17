@@ -19,14 +19,23 @@ import { UserService } from '../../services/user.service';
 
 export class LoginComponent {
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
-  @Input() user: User;
-  @Input() username: string;
-  @Input() password: string;
+  login(usr: string, pass: string) {
+    this.userService.getAllUsers()
+      .subscribe(
+      users => {
+        users.map(user => {
+        if (user.username == usr) {
+          if (user.password == pass) {
+            this.router.navigateByUrl('/index');
+          }
+        }
+      },
+      err => console.log(err));
 
-  login() {
-    
+      })
   }
 }

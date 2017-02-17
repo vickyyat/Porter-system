@@ -8,13 +8,17 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class UserService {
-  constructor(private http: Http) {
-
-  }
+  constructor(private http: Http) { }
   private usersUrl = 'http://localhost:8000/api/users';
 
   getUser(id: number): Observable<User[]> {
     return this.http.get(`${this.usersUrl}/${id}`)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  getAllUsers(): Observable<User[]> {
+    return this.http.get(this.usersUrl)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -24,7 +28,8 @@ export class UserService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.usersUrl, body, options)
+    console.log(bodyString);
+    return this.http.post(this.usersUrl, bodyString, options)
       .map((res:Response) => res.json())
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }

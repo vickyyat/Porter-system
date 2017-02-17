@@ -32,7 +32,7 @@
   </div>
 
   <div *ngIf="showRooms && isChecked">
-    <div *ngFor="let room of rooms | filterAvailable: ref.checked">
+    <div *ngFor="let room of rooms | filterAvailable: isChecked">
       <room [number]="room.number" [available]="room.available" [capacity]="room.capacity" [id]="room.id" [room]="room"></room>
     </div>
   </div>
