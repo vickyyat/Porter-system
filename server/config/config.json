@@ -1,0 +1,23 @@
+{
+    "development": {
+        "username": "postgres",
+        "password": "dada",
+        "database": "vicky_db",
+        "host": "127.0.0.1",
+        "dialect": "postgres"
+    },
+    "test": {
+        "username": "vicky",
+        "password": "dada",
+        "database": "database_test",
+        "host": "127.0.0.1",
+        "dialect": "postgres"
+    },
+    "production": {
+        "username": "vicky",
+        "password": "dada",
+        "database": "database_production",
+        "host": "127.0.0.1",
+        "dialect": "postgres"
+    }
+}
