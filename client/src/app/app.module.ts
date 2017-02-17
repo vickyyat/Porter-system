@@ -17,6 +17,8 @@ import { RoomService } from './services/room.service';
 import { UserService } from './services/user.service';
 import { EmitterService } from './emitter.service';
 import { FilterAvailablePipe } from './available.pipe';
+import { FilterByNumberPipe } from './available.pipe';
+import { FilterByCapacityPipe } from './available.pipe';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
@@ -27,6 +29,8 @@ import { AppRoutingModule } from './app-routing.module';
     LoginComponent,
     RegisterComponent,
     FilterAvailablePipe,
+    FilterByNumberPipe,
+    FilterByCapacityPipe,
     NavigationComponent
   ],
   imports: [

@@ -21,4 +21,15 @@ export class RegisterComponent {
   constructor(
     private userService: UserService
   ) { }
+
+  @Input() user: User;
+
+  addUser(usr: string, pass: string, confPass: string) {
+    if (pass === confPass) {
+      console.log(this.user);
+      this.user.username = usr;
+      this.user.password = pass;
+      this.userService.addUser(this.user);
+    }
+  }
 }

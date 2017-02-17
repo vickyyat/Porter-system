@@ -2,6 +2,6 @@ export class User {
   constructor(
     public id: number,
     public username: string,
-    private password: string
+    public password: string
   ) { }
 }

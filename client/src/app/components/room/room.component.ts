@@ -29,10 +29,7 @@ export class RoomComponent {
 
   updateRoom() {
     this.available = this.available ? false : true;
-    console.log(this.room);
     this.room.available = this.available;
-    console.log(this.room.available);
-    console.log(this.room);
     this.roomService.updateRoom(this.room)
       .subscribe(
       room => this.room = room,

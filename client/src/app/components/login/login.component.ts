@@ -22,12 +22,11 @@ export class LoginComponent {
     private userService: UserService
   ) { }
 
-/*  login() {
-    this.userService.getRooms()
-      .subscribe(
-      rooms => this.rooms = rooms,
-      err => {
-        console.log(err);
-      });
-  } */
+  @Input() user: User;
+  @Input() username: string;
+  @Input() password: string;
+
+  login() {
+    
+  }
 }

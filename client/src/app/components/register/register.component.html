@@ -1,6 +1,6 @@
 <form>
-  <input type="text" name="username" placeholder="Username" required/>
-  <input type="text" name="password" placeholder="Password" required/>
-  <input type="text" name="passwordConfirm" placeholder="Confirm Password" required/>
-  <button type="button" name="button">Register</button>
+  <input #username type="text" name="username" placeholder="Username" required/>
+  <input #password type="password" name="password" placeholder="Password" required/>
+  <input #confirmPassword type="password" name="confirmPassword" placeholder="Confirm Password" required/>
+  <button type="button" name="button" (click)="addUser(username.value, password.value, confirmPassword.value)">Register</button>
 </form>

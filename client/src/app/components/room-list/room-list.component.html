@@ -11,9 +11,10 @@
     <input md-input placeholder="Capacity" />
   </md-input-container> -->
 
+    <input placeholder="Number of room" #roomNumber/>
     <input md-input placeholder="Date" />
     <input md-input placeholder="Time" />
-    <input md-input placeholder="Capacity" />
+    <input md-input placeholder="Capacity" #roomCapacity />
 
 
   <label><input #ref (click)="checked()" type="checkbox"/>Show only available</label>
@@ -24,14 +25,28 @@
 
   <button (click)="clicked()" md-button>Show rooms</button>
 
-  <div *ngIf="showRooms && isChecked">
-    <div *ngFor="let room of rooms | filterAvailable: ref.checked">
-      <room [number]="room.number" [available]="room.available" [capacity]="room.capacity" [id]="room.id"></room>
-    </div>
-  </div>
-
   <div *ngIf="showRooms && !isChecked">
-    <div *ngFor="let room of rooms">
+    <div *ngFor="let room of rooms | filterByNumber: roomNumber.value | filterByCapacity: roomCapacity.value ">
       <room [number]="room.number" [available]="room.available" [capacity]="room.capacity" [id]="room.id" [room]="room"></room>
     </div>
   </div>
+
+  <div *ngIf="showRooms && isChecked">
+    <div *ngFor="let room of rooms | filterAvailable: ref.checked">
+      <room [number]="room.number" [available]="room.available" [capacity]="room.capacity" [id]="room.id" [room]="room"></room>
+    </div>
+  </div>
+
+  <!-- <div *ngIf="showRooms && !isChecked">
+    <div *ngFor="let room of rooms ">
+      <room [number]="room.number" [available]="room.available" [capacity]="room.capacity" [id]="room.id" [room]="room"></room>
+    </div>
+  </div> -->
+
+
+
+  <!-- <div *ngIf="showRooms && !isChecked">
+    <div *ngFor="let room of rooms">
+      <room [number]="room.number" [available]="room.available" [capacity]="room.capacity" [id]="room.id" [room]="room"></room>
+    </div>
+  </div> -->
