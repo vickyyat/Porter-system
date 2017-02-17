@@ -21,7 +21,23 @@ export class RoomComponent {
   constructor(
     private roomService: RoomService
   ) { }
+  @Input() room: Room;
+  @Input() id: number;
   @Input() number: number;
   @Input() available: boolean;
   @Input() capacity: number;
+
+  updateRoom() {
+    this.available = this.available ? false : true;
+    console.log(this.room);
+    this.room.available = this.available;
+    console.log(this.room.available);
+    console.log(this.room);
+    this.roomService.updateRoom(this.room)
+      .subscribe(
+      room => this.room = room,
+      err => {
+        console.log(err);
+      });
+  }
 }

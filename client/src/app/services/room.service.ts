@@ -17,4 +17,17 @@ export class RoomService {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
+
+  updateRoom(body: Object): Observable<Room> {
+    let bodyString = JSON.stringify(body); // Stringify payload
+    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers });
+    const url = `${this.roomsUrl}/${body['id']}`;
+
+    return this.http
+      .put(url, bodyString, options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
 }

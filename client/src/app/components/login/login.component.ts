@@ -21,4 +21,13 @@ export class LoginComponent {
   constructor(
     private userService: UserService
   ) { }
+
+/*  login() {
+    this.userService.getRooms()
+      .subscribe(
+      rooms => this.rooms = rooms,
+      err => {
+        console.log(err);
+      });
+  } */
 }

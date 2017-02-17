@@ -14,11 +14,4 @@ import { FilterAvailablePipe } from './available.pipe';
   providers: [RoomService]
 })
 
-export class AppComponent {
-  login() {
-   this.router.navigate(['/login']);
-  }
-  register() {
-   this.router.navigate(['/register']);
-  }
-}
+export class AppComponent {}

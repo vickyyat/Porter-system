@@ -44,17 +44,13 @@ router.post('/', (req, res) => {
 //     });
 // });
 
-// router.put('/:id', findRoom, (req, res) => {
-//   let room = req.room;
-//   let roomParams = req.body;
-//   // gameParams.playersCountRange[0]--;
-//   // gameParams.playingTimeRange[0]--;
-//   // game.update(gameParams).then((updatedGame) => {
-//   //   updatedGame.playersCountRange[0]++;
-//   //   updatedGame.playingTimeRange[0]++;
-//   //   res.status(200).send(updatedGame);
-//   // });
-// });
+router.put('/:id', findRoom, (req, res) => {
+  let room = req.room;
+  let roomParams = req.body;
+  room.update(roomParams).then((updatedRoom) => {
+    res.status(200).send(updatedRoom);
+  });
+});
 
 function findRoom(req, res, next) {
   Room.findById(req.params.id).then((room) => {

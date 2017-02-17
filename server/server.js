@@ -16,7 +16,7 @@ app.use((req, res, next) => {
     'X-HTTP-Method-Override',
     'X-Requested-With'
   ].join(', '));
-  res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE');
+  res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PUT');
   next();
 });
 
