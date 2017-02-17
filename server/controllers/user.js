@@ -11,11 +11,18 @@ router.get('/:id', findUser, (req, res) => {
   res.status(200).send(user);
 });
 
+router.get('/', (req, res) => {
+  User.findAll()
+    .then(users => {
+      res.status(200).send(users);
+    })
+});
+
 router.delete('/:id', findUser, (req, res) => {
   let user = req.user;
   user.destroy()
-  .then(() => res.sendStatus(200))
-  .catch(() => res.sendStatus(500));
+    .then(() => res.sendStatus(200))
+    .catch(() => res.sendStatus(500));
 });
 
 router.post('/', (req, res) => {
